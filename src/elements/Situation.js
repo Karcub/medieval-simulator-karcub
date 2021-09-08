@@ -14,6 +14,12 @@ const Situation = () => {
     const history = useHistory();
     const restartUrl = "/intro";
 
+    function makeRandomChoice() {
+        const random0or1 = Math.round(Math.random());
+        let img = document.getElementsByClassName("btn option")[random0or1]
+        makeChoice(random0or1, img)
+    }
+
     const CountDownTimer = () => (
         <CountdownCircleTimer
             isPlaying
@@ -26,7 +32,7 @@ const Situation = () => {
             trailColor={'#0c1122'}
             size={130}
             onComplete={() => {
-
+                makeRandomChoice();
             }}
         >
             {({ remainingTime }) => remainingTime}
