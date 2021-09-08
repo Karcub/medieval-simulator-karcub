@@ -1,10 +1,10 @@
 import styled  from "styled-components";
-import king from "../styles/king.png";
-import user from "../styles/user.png";
-import church from "../styles/church.png";
-import money from "../styles/money.png";
-import health from "../styles/health.png";
-import over from "../styles/gameoverr.png";
+import king from "../images/king.png";
+import user from "../images/user.png";
+import church from "../images/church.png";
+import money from "../images/money.png";
+import health from "../images/health.png";
+import over from "../images/gameoverr.png";
 
 export const CharCard = styled.div
     .attrs({className: 'card'})`
