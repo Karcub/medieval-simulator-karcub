@@ -1,0 +1,195 @@
+.container {
+    width: 450px;
+    height: 560px;
+    background-color: #586C82;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    border-radius: 5px;
+    box-shadow: 7px 5px 14px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#intro {
+    text-align: left;
+    color: white;
+    font-family: MedievalSharp, serif;
+    font-size: 23px;
+    line-height: 35px;
+    padding-top: 20%;
+    padding-bottom: 8%;
+}
+
+.initial {
+    text-align: left;
+    font-weight: bold;
+    color: goldenrod;
+    font-size: 50px;
+    line-height: 35px;
+    font-family: MedievalSharp, serif;
+}
+
+.stat-name {
+    font-weight: bold;
+    color: goldenrod;
+    font-size: 24px;
+    font-family: MedievalSharp, serif;
+    font-style: italic;
+}
+
+.intro-end {
+    color: gold;
+    font-size: 24px;
+    font-family: MedievalSharp, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.start {
+    position: fixed;
+    bottom: 1%;
+    left: 46%;
+    font-family: MedievalSharp, serif;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #545c68;
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+}
+
+.btn:hover {
+    background-color: rgba(33, 46, 65, 0.43);
+    font-style: italic;
+}
+
+
+.option-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#text {
+    text-align: center;
+    color: white;
+    font-family: MedievalSharp, serif; font-size: 26px; font-style: normal; font-variant: small-caps; font-weight: 700; line-height: 27px
+}
+
+.btn-right {
+    float: right;
+    width: 200px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.btn-left {
+    width: 200px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.option {
+    text-align: center;
+    display: inline-flex;
+    padding: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #545c68;
+    color: white;
+    font-family: MedievalSharp, serif; font-size: 17px; font-style: normal; font-variant: small-caps; font-weight: 700; line-height: 18.7px
+}
+
+.stat-symbol {
+    width: 50px;
+    height: 50px;
+}
+
+.stats {
+    padding-left: 17px;
+    display: table-cell;
+    vertical-align: center;
+}
+
+.stat {
+    display: inline-block;
+    width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+
+}
+
+.score-container {
+    position: fixed;
+    top: 6%;
+    left: 46%;
+    color: white;
+    font-size: 20px;
+    font-style: oblique;
+    font-family: MedievalSharp, serif;
+}
+
+#score {
+    font-family: MedievalSharp, serif;
+}
+
+#high-score {
+    font-family: MedievalSharp, serif;
+}
+
+.high-score-container {
+    position: fixed;
+    left: 43.5%;
+    color: white;
+    font-size: 30px;
+    font-style: oblique;
+    font-family: MedievalSharp, serif;
+    top: 1%;
+}
+
+@keyframes yay {
+    from {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotate(40deg) translateY(-80px);
+        opacity: 0;
+    }
+}
+
+@keyframes nope {
+    from {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotate(-40deg) translateY(-80px);
+        opacity: 0;
+    }
+}
+
+.character-card-yay {
+    animation: yay 1s ease-out;
+}
+
+.character-card-nope {
+    animation: nope 1s ease-out;
+}
+
+.countdown {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
