@@ -9,6 +9,7 @@ const Situation = () => {
     const card = Material[id];
     const cards = getCards();
     const nextCardUrl = `/card/${getSituationId()}`;
+    const history = useHistory();
 
     function getCards() {
         card.used = true;
@@ -26,6 +27,24 @@ const Situation = () => {
             cards[j] = temp;
         }
         return (cards[0].id);
+    }
+
+    function animateCard(img) {
+        if (img.className === 'btn option btn-left') {
+            document.getElementsByClassName("character-card")[0].classList.add('character-card-nope');
+        } else document.getElementsByClassName("character-card")[0].classList.add('character-card-yay');
+    }
+
+    function makeChoice(option, img) {
+
+        animateCard(img);
+        delayNextSituation();
+    }
+
+    function delayNextSituation() {
+        window.setTimeout(() => {
+            history.push(nextCardUrl);
+        }, 1000)
     }
 
     return (
