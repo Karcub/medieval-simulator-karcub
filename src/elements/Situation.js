@@ -1,7 +1,7 @@
 import "../styles/situation.css";
 import {Link, useHistory, useParams, withRouter} from "react-router-dom";
 import Material from "../globals/Material";
-import {CharCard} from "../style/CharCard";
+import {CharCard} from "../styles/CharCard";
 import {CountdownCircleTimer} from 'react-countdown-circle-timer'
 
 
