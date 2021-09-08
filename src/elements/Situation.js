@@ -1,6 +1,7 @@
 import "../styles/situation.css";
 import {Link, useHistory, useParams, withRouter} from "react-router-dom";
 import Material from "../globals/Material";
+import {CharCard} from "../style/CharCard";
 
 
 const Situation = () => {
@@ -29,8 +30,6 @@ const Situation = () => {
 
     return (
         <>
-            <div className="countdown">
-                    </div>
                     <div id="text">{card.text}</div>
                     <div className="button-container">
                     <Link to={nextCardUrl}
@@ -39,6 +38,7 @@ const Situation = () => {
                     <Link to={nextCardUrl}
                     className="btn option btn-right" value="2" id="option2">{card.options[1].text}
                     </Link>
+                        <CharCard props={card.theme} id="char-card" className="character-card"/>
                     </div>
             </>
     );
