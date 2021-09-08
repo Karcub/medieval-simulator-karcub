@@ -3,6 +3,7 @@ import {Link, useHistory, useParams, withRouter} from "react-router-dom";
 import Material from "../globals/Material";
 import {CharCard} from "../styles/CharCard";
 import {CountdownCircleTimer} from 'react-countdown-circle-timer'
+import UserInfo from "../globals/UserInfo";
 
 
 const Situation = () => {
@@ -11,6 +12,7 @@ const Situation = () => {
     const cards = getCards();
     const nextCardUrl = `/card/${getSituationId()}`;
     const history = useHistory();
+    const restartUrl = "/intro";
 
     const CountDownTimer = () => (
         <CountdownCircleTimer
@@ -64,7 +66,7 @@ const Situation = () => {
     }
 
     function makeChoice(option, img) {
-
+        impactStats(option);
         animateCard(img);
         delayNextSituation();
     }
@@ -75,8 +77,43 @@ const Situation = () => {
         }, 1000)
     }
 
+    function restart(e) {
+        UserInfo.stats.forEach(stat => stat.value = 50)
+        UserInfo.isGameOver = false;
+        UserInfo.score = 0;
+    }
+
+    const impactStats = (choice) => {
+        for (let stat of UserInfo.stats) {
+            for (let impact of card.options[choice].impacts) {
+                if (impact.impactStat === stat.name) {
+                    stat.value += impact.impactValue;
+                    if (stat.value >= UserInfo.threshold.max) {
+                        stat.value = UserInfo.threshold.max
+                        UserInfo.isGameOver=true;
+                        UserInfo.endingStat=stat.name;
+                        UserInfo.endingThreshold="upper";
+                    } else if (stat.value <= UserInfo.threshold.min) {
+                        stat.value = UserInfo.threshold.min
+                        UserInfo.isGameOver=true;
+                        UserInfo.endingStat=stat.name;
+                        UserInfo.endingThreshold="lower";
+                    }
+                }
+            }
+        }
+        calculateScore()
+    }
+
+    function calculateScore() {
+        UserInfo.score ++;
+        UserInfo.highScore = UserInfo.highScore < UserInfo.score ? UserInfo.score : UserInfo.highScore;
+    }
+
     return (
         <>
+            <div className="score-container"><span id="score">{UserInfo.score}</span> years lived</div>
+            <div className="high-score-container">High score: <span id="high-score">{UserInfo.highScore}</span></div>
             <div className="countdown">
                 <CountDownTimer/>
             </div>
@@ -90,6 +127,7 @@ const Situation = () => {
                     </Link>
                         <CharCard props={card.theme} id="char-card" className="character-card"/>
                     </div>
+            <Link to={restartUrl} onClick={restart} className="btn start">Restart</Link>
             </>
     );
 };
