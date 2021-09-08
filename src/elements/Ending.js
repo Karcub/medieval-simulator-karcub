@@ -1,7 +1,7 @@
 import "../styles/situation.css";
-import Endings from "../Endings";
 import {CharCard} from "../styles/CharCard";
 import UserInfo from "../globals/UserInfo";
+import Endings from "../globals/Endings";
 
 const Ending = () => {
     const chosenEnding = Endings.filter(ending => ending.stat === UserInfo.endingStat && ending.threshold === UserInfo.endingThreshold);
