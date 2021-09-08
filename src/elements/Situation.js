@@ -33,6 +33,7 @@ const Situation = () => {
         if (img.className === 'btn option btn-left') {
             document.getElementsByClassName("character-card")[0].classList.add('character-card-nope');
         } else document.getElementsByClassName("character-card")[0].classList.add('character-card-yay');
+
     }
 
     function makeChoice(option, img) {
