@@ -2,6 +2,7 @@ import "../styles/situation.css";
 import {Link, useHistory, useParams, withRouter} from "react-router-dom";
 import Material from "../globals/Material";
 import {CharCard} from "../style/CharCard";
+import {CountdownCircleTimer} from 'react-countdown-circle-timer'
 
 
 const Situation = () => {
@@ -10,6 +11,25 @@ const Situation = () => {
     const cards = getCards();
     const nextCardUrl = `/card/${getSituationId()}`;
     const history = useHistory();
+
+    const CountDownTimer = () => (
+        <CountdownCircleTimer
+            isPlaying
+            duration={100}
+            colors={[
+                ['#8ffaaa', 0.33],
+                ['#f8d37e', 0.33],
+                ['#f67474', 0.33],
+            ]}
+            trailColor={'#0c1122'}
+            size={130}
+            onComplete={() => {
+
+            }}
+        >
+            {({ remainingTime }) => remainingTime}
+        </CountdownCircleTimer>
+    )
 
     function getCards() {
         card.used = true;
@@ -27,6 +47,13 @@ const Situation = () => {
             cards[j] = temp;
         }
         return (cards[0].id);
+    }
+
+    function delay(e, option) {
+        e.preventDefault();
+        e.stopPropagation();
+        let img = e.target;
+        makeChoice(option, img);
     }
 
     function animateCard(img) {
@@ -50,12 +77,15 @@ const Situation = () => {
 
     return (
         <>
+            <div className="countdown">
+                <CountDownTimer/>
+            </div>
                     <div id="text">{card.text}</div>
                     <div className="button-container">
-                    <Link to={nextCardUrl}
+                    <Link to={nextCardUrl} onClick={(e) => {delay(e, 0)}}
                     className="btn option btn-left" value="1" id="option1">{card.options[0].text}
                     </Link>
-                    <Link to={nextCardUrl}
+                    <Link to={nextCardUrl}  onClick={(e) => {delay(e, 1)}}
                     className="btn option btn-right" value="2" id="option2">{card.options[1].text}
                     </Link>
                         <CharCard props={card.theme} id="char-card" className="character-card"/>
