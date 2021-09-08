@@ -4,6 +4,8 @@ import Material from "../globals/Material";
 import {CharCard} from "../styles/CharCard";
 import {CountdownCircleTimer} from 'react-countdown-circle-timer'
 import UserInfo from "../globals/UserInfo";
+import Stats from "./Stats";
+import Ending from "./Ending";
 
 
 const Situation = () => {
@@ -120,19 +122,23 @@ const Situation = () => {
         <>
             <div className="score-container"><span id="score">{UserInfo.score}</span> years lived</div>
             <div className="high-score-container">High score: <span id="high-score">{UserInfo.highScore}</span></div>
-            <div className="countdown">
-                <CountDownTimer/>
-            </div>
+            <Stats/>
+            {UserInfo.isGameOver ? <Ending/> :
+                <>
+                    <div className="countdown">
+                        <CountDownTimer/>
+                    </div>
                     <div id="text">{card.text}</div>
                     <div className="button-container">
-                    <Link to={nextCardUrl} onClick={(e) => {delay(e, 0)}}
-                    className="btn option btn-left" value="1" id="option1">{card.options[0].text}
-                    </Link>
-                    <Link to={nextCardUrl}  onClick={(e) => {delay(e, 1)}}
-                    className="btn option btn-right" value="2" id="option2">{card.options[1].text}
-                    </Link>
-                        <CharCard props={card.theme} id="char-card" className="character-card"/>
+                        <Link to={nextCardUrl} onClick={(e) => {delay(e, 0)}}
+                              className="btn option btn-left" value="1" id="option1">{card.options[0].text}
+                        </Link>
+                        <Link to={nextCardUrl} onClick={(e) => {delay(e, 1)}}
+                              className="btn option btn-right" value="2" id="option2">{card.options[1].text}
+                        </Link>
                     </div>
+                    <CharCard props={card.theme} id="char-card" className="character-card"/>
+                </>}
             <Link to={restartUrl} onClick={restart} className="btn start">Restart</Link>
             </>
     );
