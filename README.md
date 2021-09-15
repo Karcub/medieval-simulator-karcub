@@ -1,3 +1,7 @@
+# Medieval Peasant Simulator
+
+This is my personal project, an only frontend React Javascript game. As the intro says, you have four stats, and your answers have impact on them -negatively or positively. The gameplay is to keep them in balance the longer you can. Features include score -and high score count, also a timer, which chooses a random answer option after running out. Future plans are making an ASP.Net Core backend with SQL database instead of the in memory storage, also login and registration system. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
